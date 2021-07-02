@@ -14,3 +14,45 @@ nohup: ignoring input
 2021-07-02 14:59:20,820 PCA done
 2021-07-02 14:59:20,821 Running UMAP: 30 n_neighbors, 0.1 min_dist , 2 dim.
                   Input shape: (# observations, # features) = (450001, 50)
+/cndd2/fangming/venvs/scf_terra/lib/python3.8/site-packages/numba/typed_passes.py:292: NumbaPerformanceWarning: 
+The keyword argument 'parallel=True' was specified but no transformation for parallel execution was possible.
+
+To find out why, try turning on parallel diagnostics, see http://numba.pydata.org/numba-doc/latest/user/parallel.html#diagnostics for help.
+
+File "../../../venvs/scf_terra/lib/python3.8/site-packages/umap/rp_tree.py", line 135:
+@numba.njit(fastmath=True, nogil=True, parallel=True)
+def euclidean_random_projection_split(data, indices, rng_state):
+^
+
+  warnings.warn(errors.NumbaPerformanceWarning(msg,
+/cndd2/fangming/venvs/scf_terra/lib/python3.8/site-packages/umap/nndescent.py:91: NumbaPerformanceWarning: 
+The keyword argument 'parallel=True' was specified but no transformation for parallel execution was possible.
+
+To find out why, try turning on parallel diagnostics, see http://numba.pydata.org/numba-doc/latest/user/parallel.html#diagnostics for help.
+
+File "../../../venvs/scf_terra/lib/python3.8/site-packages/umap/utils.py", line 409:
+@numba.njit(parallel=True)
+def build_candidates(current_graph, n_vertices, n_neighbors, max_candidates, rng_state):
+^
+
+  candidate_neighbors = build_candidates(
+/cndd2/fangming/venvs/scf_terra/lib/python3.8/site-packages/numba/typed_passes.py:292: NumbaPerformanceWarning: 
+The keyword argument 'parallel=True' was specified but no transformation for parallel execution was possible.
+
+To find out why, try turning on parallel diagnostics, see http://numba.pydata.org/numba-doc/latest/user/parallel.html#diagnostics for help.
+
+File "../../../venvs/scf_terra/lib/python3.8/site-packages/umap/nndescent.py", line 47:
+    @numba.njit(parallel=True)
+    def nn_descent(
+    ^
+
+  warnings.warn(errors.NumbaPerformanceWarning(msg,
+2021-07-02 15:17:04,106 Done. running time: 1063.2851865291595 seconds.
+2021-07-02 15:17:04,123 UMAP done
+2021-07-02 15:18:23,931 Clustering done
+2021-07-02 15:18:29,193 Output file saved ../data/summary_tables_admouse/clustering_embedding_Xu2_5_R0_Xu2_5_R1_Xu2_6_R0_Xu2_6_R1_2021-07-02.tsv.gz
+Time used to build kNN map 6.855242967605591
+Time used to get kNN 20.516579389572144
+Time spent on leiden clustering: 43.86816191673279
+8145.39user 396.03system 19:28.42elapsed 731%CPU (0avgtext+0avgdata 6641012maxresident)k
+1607200inputs+27464outputs (486major+4731672minor)pagefaults 0swaps
