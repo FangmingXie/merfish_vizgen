@@ -1,0 +1,16 @@
+nohup: ignoring input
+2021-07-02 14:59:07,926 
+        sample: ['Xulab_2_5_region_0', 'Xulab_2_5_region_1', 'Xulab_2_6_region_0', 'Xulab_2_6_region_1']
+        Number of PCs: 50
+        Leiden kNN: 30
+        Leiden resolution: 1
+        UMAP kNN: 30
+        UMAP min dist: 0.1
+        
+2021-07-02 14:59:07,926 reading datasets
+2021-07-02 14:59:08,198 Note: NumExpr detected 40 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2021-07-02 14:59:08,198 NumExpr defaulting to 8 threads.
+2021-07-02 14:59:11,487 dataset readed in
+2021-07-02 14:59:20,820 PCA done
+2021-07-02 14:59:20,821 Running UMAP: 30 n_neighbors, 0.1 min_dist , 2 dim.
+                  Input shape: (# observations, # features) = (450001, 50)
