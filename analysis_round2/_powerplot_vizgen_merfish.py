@@ -102,10 +102,16 @@ def fig_plot_cluster_insitu_routine(
     ny=3,
     figsize=(9*3,6*3),
     cbar_fontsize=15,
+    showticks=False,
+    roi=[],
     suptitle='colored by cluster',
     close=False,
     output='', 
     ): 
+    """
+    roi - a list of 4 numbers, [xmin, xmax, ymin, ymax], empty [] means plotting everything
+    
+    """
     # agg data for each sample
     fig, axs = plt.subplots(ny, nx, figsize=figsize)
     for i, (ax, sample) in enumerate(zip(axs.flat, samples)):
@@ -133,6 +139,12 @@ def fig_plot_cluster_insitu_routine(
         if scalebar:
             bar_length = 1000 # (micron)
             powerplot.add_scalebar(ax, ps.npxlx-ps.len2pixel(bar_length), ps.npxlx, '1 mm')
+        if showticks:
+            ax.axis('on')
+        if len(roi) > 0 and len(roi) == 4:
+            ax.set_xlim(roi[:2])
+            ax.set_ylim(roi[2:4])
+            
         ax.set_title(title)
         
     clstcolors_obj.add_colorbar(fig, fontsize=cbar_fontsize)
@@ -144,7 +156,9 @@ def fig_plot_cluster_insitu_routine(
     if close:
         plt.close()
     else:
-        plt.show()
+        plt.show(
+        )
+    return ps
         
 def fig_plot_cluster_umap_routine(
     thedatagmat, x, y, hue,
