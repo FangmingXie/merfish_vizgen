@@ -9,6 +9,65 @@ from __init__plots import *
 import utils
 import powerplot
 
+
+def fig_plot_gene_insitu_routine_unified_colorbar(
+    thedatagmat, samples, x, y, hue, 
+    samples_annot=dict(),
+    scale_paras=dict(pxl_scale=20),
+    cmap=colorcet.cm.blues,
+    vmin=0, 
+    vmax=0,
+    nx=3,
+    ny=3,
+    figsize=(9*3,6*3),
+    output='',
+    close=False,
+    ):
+    """
+    """
+
+    fig, axs = plt.subplots(ny, nx, figsize=figsize)
+    if nx == 1 and ny == 1:
+        flataxs = [axs]
+    else:
+        flataxs = axs.flat
+
+    for i, (ax, sample) in enumerate(zip(flataxs, samples)):
+        data = thedatagmat[thedatagmat['sample']==sample]
+        if len(samples_annot) > 0:
+            title = samples_annot[sample]
+        else:
+            title = sample
+
+        if i == 0:
+            configs = dict(
+                arrows=True,
+                scalebar=True,
+                vmin=vmin,
+                vmax=vmax,
+                )
+        else:
+            configs = dict(
+                arrows=False,
+                scalebar=True,
+                vmin=vmin,
+                vmax=vmax,
+                )
+        powerplot.plot_gene_insitu_routine(ax, data, x, y, hue, scale_paras, cmap, title, **configs)
+
+    # colorbar
+    cax = fig.add_axes([0.25, 0.1, 0.1, 0.01])
+    powerplot.add_colorbar_unified_colorbar(fig, cax, vmin=vmin, vmax=vmax, cmap=cmap, orientation='horizontal')
+
+    fig.subplots_adjust(wspace=-0.2)
+    fig.suptitle(hue, y=0.93)
+    
+    if output:
+        utils.savefig(fig, output)
+    if close:
+        plt.close()
+    return fig
+
 def fig_plot_gene_insitu_routine(
     thedatagmat, samples, x, y, hue, 
     samples_annot=dict(),
